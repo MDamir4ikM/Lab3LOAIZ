@@ -4,6 +4,9 @@
 #include <string.h>
 #include <stdbool.h>
 #include <Windows.h>
+#include <iostream>
+
+using namespace std;
 
 struct node
 {
@@ -183,12 +186,54 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	spstore();
-	review();
-	spstore();
-	review();
-	spstore();
-	review();
+	cout << "Сколько элементов Вы желаете ввести: ";
+	int count = 0;
+	cin >> count;
+	
+	for (int i = 0; i < count; i++)
+	{
+		spstore();
+	}
+
+	cout << "Хотите увидеть Вашу мини-базу данных:\n1 - Да\n2 - нет\nОтвет: ";
+	int otvet;
+	cin >> otvet;
+
+	if (otvet == 1)
+	{
+		review();
+	}
+	else
+	{
+		cout << "Жаль((";
+	}
+
+	cout << "Сколько элементов Вы хотите удалить: ";
+	int count_del = 0;
+	cin >> count_del;
+	for (int i = 0; i < count_del; i++)
+	{
+		if (count_del > count)
+		{
+			cout << "Слишком многом хотите удалить";
+		}
+		else
+		{
+			cout << "Введите название элемента, который хотите удалить: ";
+			char name[255];
+			cin >> name;
+			del(name);
+		}
+	}
+
+	if (otvet == 1)
+	{
+		review();
+	}
+	else
+	{
+		cout << "Жаль((";
+	}
 
 	return 0;
 }
